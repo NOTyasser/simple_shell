@@ -12,9 +12,19 @@
 #include <ctype.h>
 #include <signal.h>
 #include <dirent.h>
+#include <errno.h>
+#include <fctnl.h>
 
 extern char **environ;
 #define  DELIMITERS " \t\n\r\a;&&"
+
+
+
+char *rd_line(void);
+char **tokenizer(char *line);
+int _execute(char **command, char **argv);
+void stringarrayfree(char **arr);
+
 
 
 
@@ -34,7 +44,6 @@ void HndleErrorCmdNotfound(char **arg, char **cmd);
 char *removeBin(char *input);
 int pathExists(char *path);
 
-int read_line(char **line);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *str_concat(char *s1, char *s2);
