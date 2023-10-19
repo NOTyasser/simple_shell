@@ -31,7 +31,7 @@ int executecmd(char **cmd, char **ar, char **env, int *tok, int *l, int *ex)
 			perror(cmd[0]);
 		cd = 1;
 	}
-	cd = handle_commanets(cmd, ex);
+	cd = handle_commanets(cmd, &tok);
 
 	if (_strcmp(cmd[0], "cd") == 0)
 	{
@@ -44,7 +44,7 @@ int executecmd(char **cmd, char **ar, char **env, int *tok, int *l, int *ex)
 			cd = 0;
 		}
 	}
-	return (executCMD(cmd, ar, env, tok, cd));
+	return (executCMD(cmd, ar, env, &tok, cd));
 }
 
 /**
