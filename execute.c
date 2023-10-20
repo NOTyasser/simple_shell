@@ -7,19 +7,31 @@
  *
  * Return: The exit status of the executed command.
  */
-int _execute(char **command, char **argv)
+int _execute(char **command, char **argv, int xed)
 {
+	char *new_cmd;
 	pid_t bro;
 	int status;
+
+	new_cmd = _getpath(command[0]);
+	if (!new_cmd)
+	{
+		print_error(argv[0], command[0], xed);
+		stringarrayfree(command);
+			return (127);
+
+	}
+
+
+
 
 	bro = fork();
 	if (bro == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(new_cmd, command, environ) == -1)
 		{
-			perror(argv[0]);
+			free(new_cmd), new_cmd = NULL;
 			stringarrayfree(command);
-			exit(0);
 		}
 
 	}
@@ -27,6 +39,8 @@ int _execute(char **command, char **argv)
 	{
 		waitpid(bro, &status, 0);
 		stringarrayfree(command);
+		free(new_cmd), new_cmd = NULL;
+
 	}
 	return (WEXITSTATUS(status));
 }

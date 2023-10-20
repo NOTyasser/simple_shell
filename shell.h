@@ -21,7 +21,7 @@ extern char **environ;
 
 char *rd_line(void);
 char **tokenizer(char *line);
-int _execute(char **command, char **argv);
+int _execute(char **command, char **argv, int xed);
 void stringarrayfree(char **arr);
 
 char *_strdup(const char *str);
@@ -29,5 +29,13 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
+
+char *_getenv(char *var);
+char *_getpath(char *direct);
+
+void print_error(char *horn, char *fok, int xed);
+char *_itoa(int j);
+void reverse_string(char *str, int len);
+
 
 #endif
