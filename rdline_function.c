@@ -1,21 +1,12 @@
 #include "shell.h"
 
+/**
+ * rd_line - Read a line of input from the user.
+ *
+ * Return: A pointer to the line read, or NULL on failure.
+ */
 char *rd_line(void)
 {
-<<<<<<< HEAD
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t nrd;
-
-	nrd = getline(&line, &len, stdin);
-	if (nrd == -1)
-	{
-		return (NULL);
-	}
-
-	return (line);
-}
-=======
     char *line = NULL;
     size_t len = 0;
     ssize_t nrd;
@@ -33,4 +24,3 @@ char *rd_line(void)
 
     return (line);
 }
->>>>>>> 3372b990fe4337bc0dc8a166c184e4c1c2ec3537

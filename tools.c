@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * stringarrayfree - Frees a string array.
+ *
+ * @arr: The string array to be freed.
+ 
+ * Return : (void)
+ */
 void stringarrayfree(char **arr)
 {
     int s;
@@ -12,8 +19,4 @@ void stringarrayfree(char **arr)
             arr[s] = NULL;
          }
          free(arr), arr = NULL;
-}
-
-
-
-        
+}        

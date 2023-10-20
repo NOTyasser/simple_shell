@@ -1,8 +1,16 @@
 #include "shell.h"
 
+/**
+ * tokenizer - Tokenizes a string into an array of strings.
+ *
+ * @line: The input string to be tokenized.
+ *
+ * Return: A dynamically allocated array of strings, or NULL on failure.
+ */
 char **tokenizer(char *line)
 {
-    char *token = NULL, *lmp = NULL;
+    char *token = NULL;
+    char *lmp = NULL;
     char **command = NULL;
     int cpt = 0, i = 0;
 

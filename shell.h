@@ -13,10 +13,9 @@
 #include <signal.h>
 #include <dirent.h>
 #include <errno.h>
-#include <fctnl.h>
 
 extern char **environ;
-#define  DELIMITERS " \t\n\r\a;&&"
+#define  DELIMITERS " \t\n"
 
 
 
