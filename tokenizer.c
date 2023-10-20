@@ -15,7 +15,7 @@ char **tokenizer(char *line)
     int cpt = 0, i = 0;
 
     if (!line)
-     return (NULL);
+    return (NULL);
     lmp = _strdup(line);
     token = strtok(lmp, DELIMITERS);
     if (token = NULL)

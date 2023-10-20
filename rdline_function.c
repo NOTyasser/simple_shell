@@ -19,8 +19,5 @@ char *rd_line(void)
         free(line);
         return (NULL);
     }
-
-
-
     return (line);
 }

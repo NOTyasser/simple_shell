@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
- * main - main fuction of simple shell
- * @ac : Arguments's count
- * @av : Arguments
- * Return : Always 0 (success)
-*/
+ * main - Entry point for a simple shell program
+ * @ac: The number of command line arguments
+ * @argv: An array of command line arguments
+ *
+ * Return: The exit status of the shell.
+ */
 int main(int ac, char **argv)
 {
     char *line = NULL;
@@ -22,16 +23,9 @@ int main(int ac, char **argv)
             write(STDOUT_FILENO, "\n", 1);
             return (status);
         }
-
-
         command = tokenizer(line);
         if (!command)
-         continue;
-
-
-         
+        continue;
         status = _execute(command, argv);
-
-        
     }
 }
