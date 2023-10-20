@@ -12,8 +12,4 @@ void stringarrayfree(char **arr)
             arr[s] = NULL;
          }
          free(arr), arr = NULL;
-}
-
-
-
-        
+}        
