@@ -1,125 +1,107 @@
 #include "shell.h"
 
 /**
- * _strdup - string duplicated
- * @str: Original string contain the pointer
- *
- * Return: Duplicated string contain a pointer
- */
-char *_strdup(char *str)
-{
-	char *A;
-	unsigned int i;
-
-	if (str == NULL)
-		return (NULL);
-	A = (char *)malloc(sizeof(char) * _strlen(str) + 1);
-
-	if (A == NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
-		A[i] = str[i];
-
-	A[i] = '\0';
-	return (A);
-}
-
-/**
- * _strcmp - Two strings compared
- * @s1: String contain the first pointer
- * @s2: String contain the second pointer
- * Return: Returns integer represents comparison result.
- */
-int _strcmp(char *s1, char *s2)
-{
-	int i = 0, rest = 1;
-
-	for (i = 0; s2[i] != '\0'; i++)
-	{
-		rest = (s1[i] + '0') - (s2[i] + '0');
-
-		if (rest != 0)
-			break;
-	}
-	return (rest);
-}
-
-
-/**
- * _strcpy - the string pointed to by src is copied into dest
- * @dest: destination
- * @src: source
- * Return: char with copy of string
+ * _strcpy - it copy a string
+ * @dest: Destination
+ * @src: Source
+ * Return: A pointer to the destination
  */
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
-	while (src[i] != '\0')
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[i])
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	dest[i] = 0;
 	return (dest);
 }
 
 /**
- * _strlen - Calcul length of null terminated string
- * @s: Calculate the length of pointer to the null terminated string
- *
- * Return: The length of the string (number of characters).
+ * _strlen - It calculate the string's length.
+ * @str: A pointer to the array's character.
+ * Return: The string's length
  */
-int _strlen(char *s)
+int _strlen(char *str)
 {
-	int i = 0;
+	int len = 0;
 
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	if (str == NULL)
+		return (0);
+
+	while (str[len] != '\0')
+		len++;
+
+	return (len);
 }
 
 /**
- * _strncmp - Compare the first 'n' characters of two strings
- * @str1: Compare the first string contain pointer
- * @str2: Compare the second string contain pointer
- * @n: maximum number of characters to compare
- *
- * Return: Integer <, =, or > than 0 if 'str1' is
- * was <, =, or >than 'str2', respectively.
+ * _strcat - It concatenate double strings
+ * @dest: A pointer to the the string's destination
+ * @src: A pointer to the string's source
+ * Return: A pointer to the string dest's result
  */
-int _strncmp(char *str1, char *str2, size_t n)
+char *_strcat(char *dest, char *src)
 {
-	unsigned char char1;
-	unsigned char char2;
+	int i;
+	int dest_len = _strlen(dest);
+	int src_len = _strlen(src);
 
-	while (n > 0 && *str1 && (*str1 == *str2))
+	for (i = 0; i < src_len; i++)
 	{
-		str1++;
-		str2++;
-		n--;
+		dest[dest_len + i] = src[i];
 	}
+	dest[dest_len + i] = '\0';
 
-	if (n == 0)
-	{
-		return (0);
-	}
+	return (dest);
+}
 
-	char1 = *(unsigned char *)str1;
-	char2 = *(unsigned char *)str2;
+/**
+ * _strcmp - It compares two strings, end's at the first differing byte
+ * @s1: The comparison should be made with the other string
+ * @s2: The comparison should be made with the reference string
+ * Return: Identify the first character where the two strings differ
+ */
+int _strcmp(char *s1, char *s2)
+{
+	int i;
 
-	if (char1 < char2)
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		return (-1);
+		i++;
 	}
-	else if (char1 > char2)
+	return (s1[i] - s2[i]);
+}
+
+/**
+ * _strdup - It copy a string into a new buffer
+ * @str: copy's the string
+ * Return: New buffer pointe
+ */
+char *_strdup(const char *str)
+{
+	char *str_arr;
+	unsigned int i;
+
+	if (str == NULL)
+		return (NULL);
+
+	str_arr = (char *)malloc((strlen(str) + 1) * sizeof(char));
+
+	if (!str_arr)
+		return (NULL);
+	i = 0;
+	while (i < strlen(str))
 	{
-		return (1);
+		str_arr[i] = str[i];
+		i++;
 	}
-	else
-	{
-		return (0);
-	}
+	str_arr[i] = '\0';
+
+	return (str_arr);
 }

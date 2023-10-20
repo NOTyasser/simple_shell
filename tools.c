@@ -8,14 +8,15 @@
  */
 void stringarrayfree(char **arr)
 {
-   int s;
-   if(!arr)
-      return;
+	int s;
 
-   for (s = 0; command[s]; s++)
-   {
-      free(arr[s]);
-      arr[s] = NULL;
-   }
-   free(arr), arr = NULL;
-}        
+	if (!arr)
+	return;
+
+	for (s = 0; arr[s]; s++)
+	{
+		free(arr[s]);
+		arr[s] = NULL;
+	}
+	free(arr), arr = NULL;
+}
