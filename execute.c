@@ -4,6 +4,7 @@
  * _execute - Function to execute a command with fork and execve
  * @command: An array of strings representing the command and its arguments
  * @argv: The name of the program
+ * @xed: The exit code or error code
  *
  * Return: The exit status of the executed command.
  */

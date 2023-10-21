@@ -23,8 +23,8 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
-        xed++;
-        
+		xed++;
+
 		command = tokenizer(line);
 		if (!command)
 			continue;
